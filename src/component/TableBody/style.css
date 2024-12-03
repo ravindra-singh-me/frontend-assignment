@@ -1,0 +1,10 @@
+.table-column {
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+.table-row .table-column:first-child {
+  border-left: none;
+}
+.table-row .table-column:last-child {
+  border-right: none;
+}

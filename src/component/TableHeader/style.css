@@ -1,0 +1,20 @@
+.tableHeader {
+  background-color: #f7f8fb;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-top: none;
+  width: 250px;
+  text-align: start;
+  font-weight: 600;
+}
+
+.table-head-row .tableHeader:first-child {
+  border-left: none;
+  width: 100px;
+  border-top-left-radius: 5px;
+}
+
+.table-head-row .tableHeader:last-child {
+  border-right: none;
+  border-top-right-radius: 5px;
+}
