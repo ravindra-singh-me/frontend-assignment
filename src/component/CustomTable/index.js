@@ -10,13 +10,6 @@ function CustomTable({ columnData, rows }) {
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * showRowPerPage;
     const lastPageIndex = firstPageIndex + showRowPerPage;
-    console.log(
-      "lastPageIndex",
-      showRowPerPage,
-      currentPage,
-      firstPageIndex,
-      lastPageIndex
-    );
     return rows?.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, showRowPerPage, rows]);
 
