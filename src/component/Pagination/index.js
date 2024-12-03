@@ -9,6 +9,7 @@ const Pagination = (props) => {
     siblingCount = 1,
     currentPage,
     showRowPerPage,
+    handlePerChange,
   } = props;
 
   const paginationRange = usePagination({
@@ -31,44 +32,54 @@ const Pagination = (props) => {
     onPageChange(currentPage - 1);
   };
   let lastPage = paginationRange[paginationRange.length - 1];
-  return (
-    <ul className={"pagination-container"}>
-      {/* Left navigation arrow */}
-      <li
-        className={clsx("pagination-item", {
-          disabled: currentPage === 1,
-        })}
-        onClick={onPrevious}
-      >
-        <div className="arrow left" />
-      </li>
-      {paginationRange.map((pageNumber) => {
-        // If the pageItem is a DOT, render the DOTS unicode character
-        if (pageNumber === DOTS) {
-          return <li className="pagination-item dots">&#8230;</li>;
-        }
 
-        // Render our Page Pills
-        return (
-          <li
-            className={clsx("pagination-item", {
-              selected: pageNumber === currentPage,
-            })}
-            onClick={() => onPageChange(pageNumber)}
-          >
-            {pageNumber}
-          </li>
-        );
-      })}
-      <li
-        className={clsx("pagination-item", {
-          disabled: currentPage === lastPage,
+  return (
+    <div className="pagination-main-container">
+      <ul className={"pagination-container"}>
+        {/* Left navigation arrow */}
+        <li
+          className={clsx("pagination-item", {
+            disabled: currentPage === 1,
+          })}
+          onClick={onPrevious}
+        >
+          <div className="arrow left" />
+        </li>
+        {paginationRange.map((pageNumber) => {
+          // If the pageItem is a DOT, render the DOTS unicode character
+          if (pageNumber === DOTS) {
+            return <li className="pagination-item dots">&#8230;</li>;
+          }
+
+          // Render our Page Pills
+          return (
+            <li
+              className={clsx("pagination-item", {
+                selected: pageNumber === currentPage,
+              })}
+              onClick={() => onPageChange(pageNumber)}
+            >
+              {pageNumber}
+            </li>
+          );
         })}
-        onClick={onNext}
-      >
-        <div className="arrow right" />
-      </li>
-    </ul>
+        <li
+          className={clsx("pagination-item", {
+            disabled: currentPage === lastPage,
+          })}
+          onClick={onNext}
+        >
+          <div className="arrow right" />
+        </li>
+      </ul>
+      <select onChange={(e) => handlePerChange(e.target.value)}>
+        {[5, 10, 15].map((option) => (
+          <option key={option} value={option}>
+            {option} rows per page
+          </option>
+        ))}
+      </select>
+    </div>
   );
 };
 

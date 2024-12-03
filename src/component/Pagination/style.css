@@ -1,3 +1,14 @@
+.pagination-main-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  select {
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    outline: none;
+  }
+}
 .pagination-container {
   display: flex;
   list-style-type: none;

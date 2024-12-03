@@ -10,11 +10,22 @@ function CustomTable({ columnData, rows }) {
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * showRowPerPage;
     const lastPageIndex = firstPageIndex + showRowPerPage;
+    console.log(
+      "lastPageIndex",
+      showRowPerPage,
+      currentPage,
+      firstPageIndex,
+      lastPageIndex
+    );
     return rows?.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, rows]);
+  }, [currentPage, showRowPerPage, rows]);
 
   const handleChangePage = (page) => {
     setCurrentPage(page);
+  };
+
+  const handlePerChange = (value) => {
+    setShowPerPage(+value);
   };
 
   return (
@@ -29,6 +40,7 @@ function CustomTable({ columnData, rows }) {
           totalCount={rows?.length}
           currentPage={currentPage}
           showRowPerPage={showRowPerPage}
+          handlePerChange={handlePerChange}
         />
       </>
     </div>
